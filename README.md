@@ -12,6 +12,8 @@ Every fourth cycle through candidates it would post results to hashtag #mtpol, r
 ##Shortcomings and improvements
 
 *Needs to scrape candidate name, party and district
+
 *Needs to be converted from array format to hash format
+
 *If more robust scraping techniques were used, it would be neat to be able to use a command-line interface to pull and or tweet results by state; the idea of one program being able handle all 50 states without constant updating may be near impossible.
 *Needs to include state senate

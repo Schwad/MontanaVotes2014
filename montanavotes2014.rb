@@ -222,11 +222,11 @@ while true
 
         #Twitter api auths and tokens
         consumer_key = OAuth::Consumer.new(
-          "rlQu1IkOEH5lk0sLstSV3wmA3",
-          "qxZaZRBR2JliiJS8cznOeCzjCk9VKtUbrxks43SX62V3Fw2V7y")
+          "#consumerkeyhere",
+          "#consumerkeyprivatehere")
         access_token = OAuth::Token.new(
-          "2890208126-m7PPmDIsKzyUqeS48ls8adqADzYwEzsFUSkHhgZ",
-          "97ZjjdSKI2udjgZjiYrQtsTyxNJHQY5kg3IVDsGRRK4hY")
+          "#accesstokenhere",
+          "#accesstokenprivatehere")
 
         baseurl = "https://api.twitter.com"
         path    = "/1.1/statuses/update.json"

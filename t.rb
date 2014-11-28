@@ -202,17 +202,34 @@ while true
                                           ]
     voting_percentage = votes_page.search('.ig_9b9da11f_5').text.strip
     voting_mega_array = voting_percentage.split("%") #separates voting percentage amounts in order
-    new_array_time = Hash.new
-    array_iterator = 1
-    i=1
+
+#####################################################################
+##############SANDBOX AREA BELOW
+#####################################################################
+
+    new_array_time = Hash.new    
+    i=1    
     while i <= 100
       new_array_time[i] = []
       i += 1
     end
+
+    #Full scraping format below, need to master CSS Selectors
+    array_iterator = 1
     votes_page.search('.divRace').each do |trtd|
       new_array_time[array_iterator] << trtd.text.strip.split("")[-2..-1].join
       array_iterator += 1
     end
+
+    ####EVERYTHING ABOVE WORKS .... JUST GOTTA MASTER SCRAPING IT ALL. REMEMBER SELECTOR GADGET IN THE TOOLBAR
+        array_iterator = 1
+    votes_page.search('.divRace').each do |trtd|
+      new_array_time[array_iterator] << trtd.text.strip
+      array_iterator += 1
+    end
+
+
+    #Checks debug and exits
     puts new_array_time
     exit
     z += 1                     #Hourly #mtpol hashtag

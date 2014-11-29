@@ -2,6 +2,8 @@ require 'rubygems'
 require 'oauth'
 require 'json'
 require 'mechanize'
+require 'nokogiri'
+require 'open-uri'
 
 while true 
   z = 0                        ##Every four cycles posts to #mtpol
@@ -208,18 +210,25 @@ while true
 #####################################################################
 
     new_array_time = Hash.new    
-    i=1    
-    while i <= 100
-      new_array_time[i] = []
-      i += 1
+#    i=1    
+#    while i <= 100
+#      new_array_time[i] = []
+#      i += 1
+#    end
+   
+    #Full scraping format below, need to master CSS Selectors
+    #array_iterator = 1
+    #votes_page.search('.divRace').each do |trtd|
+    #  new_array_time[array_iterator] << trtd.text.strip.split("")[-2..-1].join
+    #  array_iterator += 1
+    #end
+
+    #below, race_number.text.gsub(/[^\d]/,'') is the actual race number (i.e. 1, 2, 3, ... 100)
+    votes_page.search('.racedisplay .divRace').each do |race_number|
+      new_array_time[race_number.text.gsub(/[^\d]/,'')] = {} #intialize each race with an empty hash, #where the key of the new_array_time hash is the race number
     end
 
-    #Full scraping format below, need to master CSS Selectors
-    array_iterator = 1
-    votes_page.search('.divRace').each do |trtd|
-      new_array_time[array_iterator] << trtd.text.strip.split("")[-2..-1].join
-      array_iterator += 1
-    end
+
 
     ####EVERYTHING ABOVE WORKS .... JUST GOTTA MASTER SCRAPING IT ALL. REMEMBER SELECTOR GADGET IN THE TOOLBAR
         array_iterator = 1
@@ -230,7 +239,7 @@ while true
 
 
     #Checks debug and exits
-    puts new_array_time
+   # puts new_array_time
     exit
     z += 1                     #Hourly #mtpol hashtag
   end
